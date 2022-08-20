@@ -1,8 +1,6 @@
 name: Build and run unit tests
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   build_release:
