@@ -1,10 +1,9 @@
-name: Build and run unit tests
+name: Build and publish
 on:
   workflow_dispatch:
 
 jobs:
   build_release:
-    name: Build & release
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
