@@ -20,7 +20,7 @@ jobs:
       - name: Build
         run: yarn run build
 
-      - name: Deploy Storybook
+      - name: Deploy to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
