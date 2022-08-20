@@ -4,8 +4,9 @@
     display: grid;
     grid-template-rows: auto;
     grid-auto-rows: auto;
-    gap: 1rem;
-    padding: 0;
+    gap: .5rem;
+    padding: 0 .2rem;
+    margin: 0;
 }
 
 .station-list__item {
@@ -17,4 +18,13 @@
     background-color: var(--background--secondary);
     width: 100%;
     text-align: left;
+    cursor: pointer;
+}
+
+.station-list__item:hover {
+    border-color: var(--foreground);
+}
+.station-list__item:focus,
+.station-list__item:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
 }

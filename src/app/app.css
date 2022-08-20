@@ -1,0 +1,15 @@
+.app {
+    display: grid;
+    grid-template-rows: auto 35fr 50fr;
+    gap: 1rem;
+    height: calc(100vh - (var(--body-padding) * 2));
+}
+
+.app__station-list {
+    overflow: auto;
+}
+
+.app__map {
+    /* grid-area: map;
+    height: 50fr */
+}
