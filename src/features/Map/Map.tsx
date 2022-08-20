@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 
+import { mapIcon } from 'src/features/Map/icons';
 import { StationDetails } from 'src/features/StationDetails/StationDetails';
 import type { StationWithStatus } from 'src/types';
 
@@ -44,7 +45,7 @@ export const Map = ({ stations, position, stationIdFocus }: MapListProps) => {
       />
       {stations.map((station) => {
         return (
-          <Marker key={station.station_id} position={[station.lat, station.lon]}>
+          <Marker icon={mapIcon} key={station.station_id} position={[station.lat, station.lon]}>
             <Popup>
               <StationDetails station={station} showAddress={false} />
             </Popup>
