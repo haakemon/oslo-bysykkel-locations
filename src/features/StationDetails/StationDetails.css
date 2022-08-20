@@ -1,9 +1,10 @@
 .station-details {
     display: grid;
     grid-template-areas:
-        "name distance"
-        "bikes bikes";
-    gap: .5rem;
+        "name ."
+        "bikes distance";
+    gap: .25rem .75rem;
+    align-items: center;
 }
 
 .station-details__name {
@@ -13,14 +14,27 @@
 .station-details__address {
     font-style: italic;
     grid-area: name;
-    font-size: .8em;
+    font-size: .8rem;
 }
 
 .station-details__distance {
     grid-area: distance;
     text-align: right;
+    font-size: .8rem;
+    display: flex;
+    justify-content: end;
+    gap: .2rem;
+    align-items: center;
 }
 
 .station-details__bike-status {
     grid-area: bikes;
+    font-size: .8rem;
+    display: flex;
+    gap: .2rem;
+    align-items: center;
+}
+
+.staion-details__contents {
+    display: contents;
 }
