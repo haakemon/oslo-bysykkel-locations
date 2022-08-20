@@ -1,0 +1,20 @@
+.station-list {
+    list-style-type: none;
+    list-style-position: inside;
+    display: grid;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    gap: 1rem;
+    padding: 0;
+}
+
+.station-list__item {
+    border-radius: .5rem;
+    border: 1px solid transparent;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: var(--background--secondary);
+    width: 100%;
+    text-align: left;
+}
