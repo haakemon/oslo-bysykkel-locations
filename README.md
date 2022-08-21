@@ -4,6 +4,10 @@ This is a simple application which shows a list of all bysykkel locations, and h
 
 If you allow geolocation access, it will also show the distance to the locations, ordered by closest first. If you do not allow geolocation access, the list will be sorted alphabetically by location name.
 
+## Demo
+
+A live version can bee seen on github pages: https://haakemon.github.io/oslo-bysykkel-locations/
+
 ## Running the project
 
 ### Prerequisites
