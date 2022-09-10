@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import '@testing-library/jest-dom/extend-expect';
 
 // https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html#configuring-your-testing-environment

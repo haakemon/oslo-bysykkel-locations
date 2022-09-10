@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { Station, StationStatus, StationWithStatus } from 'src/types';
+import type { Station, StationsResponse, StationsStatusResponse, StationStatus, StationWithStatus } from 'src/types';
 import { getDistanceToMe } from 'src/utils/location';
 
 export enum StationsOrderBy {
@@ -24,38 +24,51 @@ type CombineStationsWithDistanceProps = {
   myPosition?: GeolocationPosition;
 };
 
+export enum LoadState {
+  IsLoading = 'isLoading',
+  IsError = 'isError',
+  IsIdle = 'isIdle',
+}
+
 export const useGetStations = () => {
   const [stations, setStations] = useState<StationWithStatus[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loadState, setLoadState] = useState(LoadState.IsLoading);
 
   useEffect(() => {
     const fetchStations = async () => {
-      const headers = {
-        'Client-Identifier': 'haakemon-oslobysykkeloversikt',
-      };
+      try {
+        const headers = {
+          'Client-Identifier': 'haakemon-oslobysykkeloversikt',
+        };
 
-      const [stationsData, statusData] = await Promise.all([
-        fetch('https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json', { headers }),
-        fetch('https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json', { headers }),
-      ]);
+        const [stationsData, statusData] = await Promise.all([
+          fetch('https://gbfs.urbansharing.com/oslobysykkel.no/station_information.json', { headers }),
+          fetch('https://gbfs.urbansharing.com/oslobysykkel.no/station_status.json', { headers }),
+        ]);
 
-      const [stationsJson, statusJson] = await Promise.all([stationsData.json(), statusData.json()]);
-      const stationsWithStatus = mergeStationsWithStatus({
-        stations: stationsJson.data.stations,
-        status: statusJson.data.stations,
-      });
+        const [stationsJson, statusJson]: [StationsResponse, StationsStatusResponse] = await Promise.all([
+          stationsData.json(),
+          statusData.json(),
+        ]);
+        const stationsWithStatus = mergeStationsWithStatus({
+          stations: stationsJson.data.stations,
+          status: statusJson.data.stations,
+        });
 
-      setStations(stationsWithStatus);
-      setIsLoading(false);
+        setStations(stationsWithStatus);
+        setLoadState(LoadState.IsIdle);
+      } catch (error) {
+        setLoadState(LoadState.IsError);
+      }
     };
 
     fetchStations();
   }, []);
 
-  return { stations, isLoading };
+  return { stations, loadState };
 };
 
-const mergeStationsWithStatus = ({ stations, status }: MergeStationWithStatusProps) => {
+export const mergeStationsWithStatus = ({ stations, status }: MergeStationWithStatusProps) => {
   return stations.map((station) => {
     return {
       ...station,

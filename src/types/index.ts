@@ -1,3 +1,21 @@
+export type StationsResponse = {
+  last_updated: number;
+  ttl: number;
+  version: string;
+  data: {
+    stations: Station[];
+  };
+};
+
+export type StationsStatusResponse = {
+  last_updated: number;
+  ttl: number;
+  version: string;
+  data: {
+    stations: StationStatus[];
+  };
+};
+
 export type Station = {
   station_id: string;
   name: string;
