@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import react from '@vitejs/plugin-react';
 import path, { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,4 +17,9 @@ export default defineConfig({
   },
   base: '/oslo-bysykkel-locations/',
   plugins: [react(), svgr()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: 'test/setupTests.ts',
+  },
 });

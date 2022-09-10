@@ -3,7 +3,7 @@ import type { StationWithStatus } from 'src/types';
 
 import './StationList.css';
 
-type StationListProps = {
+export type StationListProps = {
   stations: StationWithStatus[];
   onClickStation: (station: StationWithStatus) => void;
 };

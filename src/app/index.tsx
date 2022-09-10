@@ -28,7 +28,7 @@ export const App = () => {
     <div className='app'>
       <div className='app__header'>
         <h1>Oslo Bysykkel stasjoner</h1>
-        <PositionDetails position={position} />
+        <PositionDetails accuracy={position?.coords?.accuracy} />
       </div>
       <div className='app__station-list'>
         <StationList stations={stationsWithDistance} onClickStation={handleClickStation} />

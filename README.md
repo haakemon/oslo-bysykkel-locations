@@ -17,3 +17,9 @@ A live version can bee seen on github pages: https://haakemon.github.io/oslo-bys
 ### Starting devserver
 - Execute `yarn` to install dependencies
 - Execute `yarn start` to start the devserver. The port where the page can be reached should be displayed in the terminal.
+
+### Running tests
+
+Tests for larger interactive components are better suited to test with integration tests, using tools like Cypress. These types of tests are not added yet.
+
+To run the unit tests with coverage information, execute `yarn test-coverage`.

@@ -14,7 +14,7 @@ type IconProps = {
   variant: IconVariant;
 };
 
-const getComponent = (variant: IconVariant) => {
+export const getComponent = (variant: IconVariant) => {
   switch (variant) {
     case IconVariant.Bicycle:
       return BicycleIcon;
@@ -29,5 +29,5 @@ const getComponent = (variant: IconVariant) => {
 
 export const Icon = ({ variant }: IconProps) => {
   const Component = getComponent(variant);
-  return <Component className='icon' />;
+  return <Component className='icon' data-testid={`icon-${variant}`} />;
 };

@@ -2,15 +2,15 @@ import { distanceInMeters } from 'src/utils/location';
 
 import './PositionDetails.css'
 
-type PositionDetailsProps = {
-  position?: GeolocationPosition;
+export type PositionDetailsProps = {
+  accuracy?: GeolocationCoordinates['accuracy'];
 };
 
-export const PositionDetails = ({ position }: PositionDetailsProps) => {
+export const PositionDetails = ({ accuracy }: PositionDetailsProps) => {
   return (
     <div className='position-details'>
-      {position
-        ? (`Nøyaktighet på din posisjon: ${distanceInMeters(position.coords.accuracy)} meter`)
+      {accuracy
+        ? (`Nøyaktighet på din posisjon: ${distanceInMeters(accuracy)} meter`)
         : ('Hvis du deler din posisjon, kan vi vise avstand til stasjonene.')}
     </div>
   );

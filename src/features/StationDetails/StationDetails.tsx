@@ -4,7 +4,7 @@ import { distanceInMeters } from 'src/utils/location';
 
 import './StationDetails.css';
 
-type StationDetailsProps = {
+export type StationDetailsProps = {
   station: StationWithStatus;
   showAddress?: boolean;
 };
@@ -31,11 +31,11 @@ export const StationDetails = ({ station, showAddress = true }: StationDetailsPr
         : null}
       <div className='station-details__bike-status'>
         <div className='staion-details__contents' title='Antall ledige sykler'>
-          <Icon variant={IconVariant.Bicycle} /> <span>{station.status?.num_bikes_available}</span>
+          <Icon variant={IconVariant.Bicycle} /> <span>{station.status.num_bikes_available}</span>
         </div>
         <span>{'/'}</span>
         <div className='staion-details__contents' title='Antall ledige parkeringsplasser'>
-          <Icon variant={IconVariant.Parking} /> <span>{station.status?.num_docks_available}</span>
+          <Icon variant={IconVariant.Parking} /> <span>{station.status.num_docks_available}</span>
         </div>
       </div>
     </div>
